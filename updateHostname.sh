@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Author: LCDR C. W. Hoffmeister
 # Description: Check and update hostname if needed
@@ -37,7 +37,7 @@ function setupHostname() {
 }
 
 # main Function
-function main() {	
+function main() {
 	updateHostMAC
 	validHostname $( hostname ) || setupHostname
 }
