@@ -79,7 +79,7 @@ function setupAutoDevSecOPS () {
 	# Return:
 	#   (none)
 
-	alias make${COURSE_NUM_UPPER}="make -f ${COURSE_REPO_DIR}"
+	alias make${COURSE_NUM_UPPER}="make -f ${COURSE_REPO_DIR}/genUtils/Makefile"
 }
 
 # Call main
