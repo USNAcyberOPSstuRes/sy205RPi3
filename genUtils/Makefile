@@ -2,13 +2,17 @@
 
 # Declare Required Variables
 courseNum = sy205
-commandsDefined = $(courseNum)StuStat $(courseNum)StuPi3Stat
+commandsDefined = stat pull $(courseNum)StuStat $(courseNum)StuPull $(courseNum)StuPi3Stat $(courseNum)StuPi3Pull
 
 projDir = ~/$(courseNum)Resources
 
 .PHONY = $(commandsDefined)
 
 default : $(courseNum)StuStat
+
+stat : $(courseNum)StuStat
+
+pull : $(courseNum)StuPull
 
 $(courseNum)StuStat : $(courseNum)StuPi3Stat
 
