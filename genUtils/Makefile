@@ -25,4 +25,4 @@ $(courseNum)StuRPi3Stat :
 $(courseNum)StuRPi3Pull :
 	@printf "Student_RPi3 (origin:master) pull> "
 	@cd $(projDir) 2> /dev/null && git checkout -q master && git pull || echo FAILED
-	$(MAKE) -f $(projDir)/Makefile $(courseNum)StuRPi3Stat
+	$(MAKE) -f $(projDir)/genUtils/Makefile $(courseNum)StuRPi3Stat
