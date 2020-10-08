@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+##################################################################
+# deptUNIXUnmount - This script unmounts your Department UNIX account
+# home directory in your local machine home directory at ~/deptUNIX.
+##################################################################
+
+if [ -d ${HOME}/deptUNIX ] ; then
+	fusermount -u ${HOME}/deptUNIX
+	if [[ ${?} != 0 ]] ; then
+		echo >2
+		echo "ERROR: Unable to unmount; shutdown/sleep/hibernate at YOUR OWN RISK." >2
+		echo >2
+	fi
+fi

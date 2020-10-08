@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+##################################################################
+# deptUNIXmount - This script mounts your Department UNIX account
+# home directory in your local machine home directory at ~/deptUNIX.
+##################################################################
+
+# Arguments:
+#  [username] : Optional, attempt to mount as username; otherwise as current user
+
+function main () {
+	if [ ! -d ${HOME}/deptUNIX ] ; then
+		mkdir ${HOME}/deptUNIX
+	fi
+
+	if [[ ${#} == 0 ]] ; then
+		sshfs midn.cyber.usna.edu: ${HOME}/deptUNIX -oworkaround=rename
+	else
+		sshfs ${1}@midn.cyber.usna.edu: ${HOME}/deptUNIX -oworkaround=rename
+	fi
+
+	if [[ ${?} == 0 ]] ; then
+		echo "Your Dept UNIX home directory is now mounted as 'deptUNIX' in your home directory."
+		echo
+		echo "*** UNMOUNT before allowing VM or host system to sleep/hibernate using deptUNIXUnmount. ***"
+		echo
+	else
+		echo "Your Dept UNIX home directory could not be mounted."
+	fi
+}
+
+# Call main() passing in command line arguments
+main ${@}
