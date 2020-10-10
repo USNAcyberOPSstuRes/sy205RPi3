@@ -2,7 +2,7 @@
 
 # Declare Required Variables
 courseNum = sy205
-commandsDefined = stat pull $(courseNum)StuStat $(courseNum)StuPull $(courseNum)StuSysStat $(courseNum)StuSysPull
+commandsDefined = courseInstall pull stat $(courseNum)Install $(courseNum)StuStat $(courseNum)StuPull $(courseNum)StuSysStat $(courseNum)StuSysPull
 
 projDir = ~/$(courseNum)Resources
 
@@ -10,9 +10,14 @@ projDir = ~/$(courseNum)Resources
 
 default : $(courseNum)StuStat
 
-stat : $(courseNum)StuStat
+courseInstall : $(courseNum)Install
 
 pull : $(courseNum)StuPull
+
+stat : $(courseNum)StuStat
+
+$(courseNum)Install :
+	@cd $(projDir)/genUtils/ 2> /dev/null && ./install.sh || echo FAILED: Unable to run install script
 
 $(courseNum)StuStat : $(courseNum)StuSysStat
 
